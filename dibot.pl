@@ -27,7 +27,7 @@ while (<STDIN>)
 
 
 #option cri
-     if (/\[(.*)\] <[^>]*>.* cr[iy]([^.\/?!:,…" ]{3,}).*\n$/)
+     if (/\[(.*)\] <[^>]*>.* cr[iy]([^.\/?!:,…\)\(" ]{4,}).*\n$/)
     {
       if (int(rand(10)) == 0)
       {
@@ -63,7 +63,7 @@ while (<STDIN>)
     }
 
 #grotas !
-     if (/\[(.*)\] <[^>]*> (G|g)rotas(!| !|.)?\n$/)
+     if (/\[(.*)\] <[^>]*> (G|g)rotas(!| !|.|…)?\n$/)
     {
       if (int(rand(6)) == 0)
       {
@@ -119,17 +119,17 @@ while (<STDIN>)
 #     }
 
 #La voie de son maître (et hopefully celle de personne d'autre)
-     if (/^\[.*bot\] <Machin>.* echo (.+)\n$/)
+     if (/^\[dibot\] <Machin>.* echo (.+)\n$/)
     {
         my $ans = $1;
         print "$ans \n"
     }
 
-     if (/^\[.*bot\] <([^>]*)>.* \[.*bot\] <Machin>.* echo \[(.*)\].+\n$/)
+     if (/^\[dibot\] <([^>]*)>.* \[.*bot\] <Machin>.* echo \[(.*)\].+\n$/)
     {
         my $idiot = $1;
         my $chan = $2;
-        print "[$chan] $idiot est un misérable cancrelat qui tente de hacker les bots des honnêtes gens (et de Machin aussi).\n"
+        print "[$chan] $idiot est un misérable cancrelat qui hacke les bots des braves gens.\n"
     }
 
 #gifs
@@ -210,7 +210,7 @@ while (<STDIN>)
     }
 
 #Karabot
-     if (/\[.*\] <([^>]*)>.*[a-z]{16}.*\n/) #problème avec la regex
+     if (/\[.*\] <([^>]*)>.*[a-z]{17}.*\n/) #problème avec la regex
         {
 	if (int(rand(11)) == 0)
         {
