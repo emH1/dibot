@@ -87,11 +87,13 @@ while (<STDIN>)
                 my $ans = lc($2);
                 my $bns = lc($3);
                 my $cns = lc($4);
-                my $url = "http://".${ans}.${bns}.${cns}.".tumblr.com"; 
-                my $http_status = HTTP::Tiny->new()->get($url)->{status};
+                my $url = "https://".${ans}.${bns}.${cns}.".tumblr.com";
+                my %headers = (
+                    "User-Agent" => " Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)");
+                my $http_status = HTTP::Tiny->new()->get($url, { headers => \%headers })->{status};
                 if ($http_status != 404)
                        {
-                print "[$chan] $url ?\n"
+                           print "[$chan] $url ?\n" ;
                 }
                 else
                 {
