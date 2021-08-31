@@ -219,6 +219,24 @@ while (<STDIN>)
                 print "$1: C'est pas faux.\n"
 	        }
 	}
+#1d6
+     if (/(\[.*\]) <[^>]*>.*dibot: (\d+)d(\d+)[ ]?([\+\-] ?\d+)?.*/)
+        {
+        print $1;
+        my $add = int($4);
+        print "$2d$3";
+        if($add > 0){print "+$add";}
+        if($add < 0){print "$add";}
+        print": ";
+        my $a=0;
+        if(int($2)>1e6 or int($3)>1e6 or int($4)>1e6){print "Non.\n";next;}
+		for(1..int($2)){
+            my $b=int(rand($3))+1;
+            $a+=$b;
+        }
+        $a=$a+$add;
+        print "$a\n"
+	}
 #     if (/\[.*\] <([^>]*)>.* ([^.\/\\?!:, ]{15,}).*\n$/)
 #	{
 #	my $ans = $2;
@@ -252,6 +270,11 @@ if (/\[(.*)\] <(p4bl0)>.*(cr|d)ibot.*(bébé|child|(E|e)nfant|(F|f)iston).*\n$/)
     {
         my $chan = $1;
         print "[$chan]Parent A !\n"
+    }
+if (/\[(.*)\] <(Mc)>.*(cr|d)ibot.*(bébé|child|(E|e)nfant|(F|f)iston).*\n$/)
+    {
+        my $chan = $1;
+        print "[$chan]Parent B !\n"
     }
 #(p|b)ot
 if (/\[.*\] <([^>]*)>.(P|p)(o|ô)t(\.| !| \?)?\n$/)
